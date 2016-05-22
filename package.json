@@ -1,0 +1,34 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "An example React application",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cliff76/react.git"
+  },
+  "keywords": [
+    "react",
+    "express"
+  ],
+  "author": "Clifton C. Craig",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cliff76/react/issues"
+  },
+  "homepage": "https://github.com/cliff76/react#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "jshint": "^2.9.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-jshint": "^2.0.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-typescript": "^2.13.4"
+  }
+}
