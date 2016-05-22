@@ -32,13 +32,22 @@ var CommentBox = React.createClass({
 });
 
 var Comment = React.createClass({
+    rawMarkup: function() {
+        var rawMarkup = marked(this.props.children.toString(), {sanitize: true});
+        return { __html: rawMarkup };
+    },
+    /**
+     * This is obviously dangerous! It renders user input as RAW HTML
+     * rather than escaping it. Opens the door to XSS attacks.
+     * @returns {XML}
+     */
     render: function() {
         return (
             <div className="comment">
                 <h2 className="commentAuthor">
                     {this.props.author}
                 </h2>
-                {this.props.children}
+                <span dangerouslySetInnerHTML={this.rawMarkup()} />
             </div>
         );
     }
