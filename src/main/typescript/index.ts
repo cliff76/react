@@ -9,6 +9,7 @@ var data = [
 
 app.use(express.static('www'));
 app.get('/api/comments', function (req, res) {
+    console.log("request received");
     res.send(data);
 });
 
