@@ -32,7 +32,7 @@ var CommentForm = React.createClass({
         if (!text || !author) {
             return;
         }
-        // TODO: send request to the server
+        this.props.onCommentSubmit({author: author, text: text});
         this.setState({author: '', text: ''});
     },
     render: function() {
@@ -70,6 +70,21 @@ var CommentBox = React.createClass({
             }.bind(this)
         });
     },
+    handleCommentSubmit: function(comment) {
+        $.ajax({
+            url: this.props.url,
+            dataType: 'json',
+            contentType: 'application/x-www-form-urlencoded',
+            type: 'POST',
+            data: comment,
+            success: function(data) {
+                this.setState({data: data});
+            }.bind(this),
+            error: function(xhr, status, err) {
+                console.error(this.props.url, status, err.toString());
+            }.bind(this)
+        });
+    },
     getInitialState: function() {
         return {data: []};
     },
@@ -82,7 +97,7 @@ var CommentBox = React.createClass({
             <div className="commentBox">
                 <h1>Comments</h1>
                 <CommentList data={this.state.data}/>
-                <CommentForm />
+                <CommentForm onCommentSubmit={this.handleCommentSubmit} />
             </div>
         );
     }
