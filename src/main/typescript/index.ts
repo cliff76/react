@@ -1,9 +1,15 @@
 import express = require('express');
 let app = express();
 
+var data = [
+    {id: 1, author: "Clifton Craig", text: "This is the bees knees!"},
+    {id: 2, author: "Michael Hart", text: "Use the *CQRS* pattern!"},
+    {id: 3, author: "Milton Waid", text: "Hi Clifton."}
+];
+
 app.use(express.static('www'));
-app.get('/', function (req, res) {
-    res.send('Hello World!');
+app.get('/api/comments', function (req, res) {
+    res.send(data);
 });
 
 app.listen(3000, function () {
